@@ -1,9 +1,7 @@
-# 🎨 AgentiCAD
-
 **Professional AI-Powered CAD Design Platform**
 
 > **⚠️ CONFIDENTIAL AND PROPRIETARY SOFTWARE**
-> **© 2024-2025 AgentiCAD. All Rights Reserved.**
+> **© 2024-2025 All Rights Reserved.**
 > This software contains valuable trade secrets and confidential information.
 > Unauthorized access, use, copying, or distribution is strictly prohibited.
 > See [LICENSE.md](LICENSE.md) for complete terms and conditions.
@@ -11,8 +9,6 @@
 Transform your ideas into professional 3D CAD models using advanced AI and multimodal input processing. AgentiCAD combines the power of modern AI with professional CAD design tools to make 3D modeling accessible to everyone.
 
 > **🔐 Security Notice**: This application requires API keys and environment variables. See `.env.production.template` for configuration details. Never commit `.env` files to version control.
-
-![AgentiCAD Banner](public/agenticad-long-logo.png)
 
 ## ✨ Features
 
@@ -44,8 +40,8 @@ Transform your ideas into professional 3D CAD models using advanced AI and multi
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/agenticad.git
-cd agenticad
+git clone https://github.com/yourusername/cadAgent.git
+cd cadAgent
 ```
 
 2. **Run initial setup**
@@ -195,9 +191,9 @@ Found a bug? Please create an issue with:
 
 **PROPRIETARY AND CONFIDENTIAL**
 
-This software is proprietary to AgentiCAD and is protected by copyright, trade secret, and other intellectual property laws. This is NOT open source software.
+This software is proprietary to cadAgent and is protected by copyright, trade secret, and other intellectual property laws. This is NOT open source software.
 
-**All Rights Reserved. No license is granted for any use without explicit written authorization from AgentiCAD.**
+**All Rights Reserved. No license is granted for any use without explicit written authorization from cadAgent.**
 
 See [LICENSE](LICENSE) and [LICENSE.md](LICENSE.md) for complete legal terms.
 See [EULA.md](EULA.md) for end user license agreement.
@@ -205,8 +201,8 @@ See [EULA.md](EULA.md) for end user license agreement.
 ## 👥 Contributors
 
 This project is maintained by:
-- **AgentiCAD Developer** - Core development and architecture
-- **Dally101** - Project oversight and management
+- **cadAgent Developer** - Core development and architecture
+- **thakur** - Project oversight and management
 
 ## 🙏 Acknowledgments
 - **Supabase** for backend infrastructure
@@ -225,7 +221,7 @@ For production deployment, make sure to set the following environment variables:
 
 ```bash
 # App Configuration - CRITICAL for production redirects
-VITE_APP_URL=https://agenticad.store
+VITE_APP_URL=https://cadAgent.store
 
 # Supabase Configuration
 VITE_SUPABASE_URL=your_supabase_url
@@ -239,24 +235,16 @@ STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 # Other required variables...
 ```
 
-**Important**: The `VITE_APP_URL` variable is essential for production deployments to ensure Stripe checkout success/cancel redirects go to `https://agenticad.store` instead of `localhost:5173`.
+**Important**: The `VITE_APP_URL` variable is essential for production deployments to ensure Stripe checkout success/cancel redirects go to `https://cadAgent.store` instead of `localhost:5173`.
 
 ## Production Deployment Checklist
 
 Before deploying to production, ensure:
 
-- [ ] `VITE_APP_URL=https://agenticad.store` is set in production environment
+- [ ] `VITE_APP_URL=https://cadAgent.store` is set in production environment
 - [ ] All Supabase environment variables are configured
 - [ ] Stripe production keys are set (not test keys)
 - [ ] Stripe webhook endpoints are configured for production domain
 - [ ] Build command: `npm run build`
 - [ ] Test Stripe checkout flow redirects to correct domain
 - [ ] Test OAuth redirects (Google, Apple, Microsoft) work correctly
-
-## Getting Started
-
----
-
-**Made with ❤️ by the AgentiCAD Team**
-
-Transform your ideas into reality with AI-powered CAD design. 
