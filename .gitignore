@@ -101,3 +101,18 @@ npm-packages-offline-cache/
 # Hosting/preview caches
 .netlify/
 .vercel/
+# Cleanup - Legacy/Dev Files
+scripts/
+apple-jwt-generator/
+test-*.js
+test-*.html
+qr-setup.html
+*_CHECKLIST.md
+*_GUIDE.md
+*_FIX.md
+*_SUMMARY.md
+*_IMPLEMENTATION.md
+*_SETUP.md
+temp_*.tsx
+README-WIP.md
+README_*.md

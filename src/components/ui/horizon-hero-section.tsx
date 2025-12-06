@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,9 +19,8 @@ export const HorizonHeroSection: React.FC<HorizonHeroSectionProps> = ({ onGetSta
 
   const smoothCameraPos = useRef({ x: 0, y: 30, z: 100 });
 
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [currentSection, setCurrentSection] = useState(1);
-  const [isReady, setIsReady] = useState(false);
+
+
   const totalSections = 3;
 
   const threeRefs = useRef<any>({
@@ -88,14 +87,13 @@ export const HorizonHeroSection: React.FC<HorizonHeroSectionProps> = ({ onGetSta
       createMountains();
       createLighting(); // Add proper lighting for 3D models
       createAtmosphere();
-      createAtmosphere();
+
       getLocation();
 
       // Start animation
       animate();
 
-      // Mark as ready after Three.js is initialized
-      setIsReady(true);
+
     };
 
     const createStarField = () => {
@@ -357,7 +355,7 @@ export const HorizonHeroSection: React.FC<HorizonHeroSectionProps> = ({ onGetSta
       const time = Date.now() * 0.001;
 
       // Update stars
-      refs.stars.forEach((starField: any, i: number) => {
+      refs.stars.forEach((starField: any) => {
         if (starField.material.uniforms) {
           starField.material.uniforms.time.value = time;
         }
@@ -368,10 +366,7 @@ export const HorizonHeroSection: React.FC<HorizonHeroSectionProps> = ({ onGetSta
         refs.nebula.material.uniforms.time.value = time * 0.5;
       }
 
-      // Update orb
-      if (refs.orb && refs.orb.material.uniforms) {
-        refs.orb.material.uniforms.time.value = time;
-      }
+
 
 
 
@@ -476,9 +471,7 @@ export const HorizonHeroSection: React.FC<HorizonHeroSectionProps> = ({ onGetSta
       const maxScroll = documentHeight - windowHeight;
       const progress = Math.min(scrollY / maxScroll, 1);
 
-      setScrollProgress(progress);
       const newSection = Math.floor(progress * totalSections);
-      setCurrentSection(newSection);
 
       const { current: refs } = threeRefs;
 
