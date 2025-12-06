@@ -1,0 +1,6 @@
+# Map all contributors to their canonical names
+# Exclude legacy tool identities (Claude, Your Name)
+AgentiCAD Developer <developer@agenticad.com> Claude <noreply@anthropic.com>
+AgentiCAD Developer <developer@agenticad.com> claude <noreply@anthropic.com>
+AgentiCAD Developer <developer@agenticad.com> Your Name <user@example.com>
+AgentiCAD Developer <developer@agenticad.com> Agenticad Developer <developer@agenticad.com>

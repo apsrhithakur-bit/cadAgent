@@ -1,0 +1,629 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced Cosmic Destiny Theme */
+@layer base {
+  :root {
+    --horizon-dark: #000000;
+    --horizon-void: #0a0a0f;
+    --horizon-deep: #0f0f1a;
+    --horizon-accent: #3b82f6;
+    --horizon-glow: #60a5fa;
+    --cosmic-purple: #6366f1;
+    --cosmic-cyan: #06b6d4;
+    --cosmic-gold: #f59e0b;
+    --destiny-gradient: linear-gradient(135deg, #000000 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533a71 100%);
+  }
+  
+  body {
+    @apply text-white;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--destiny-gradient);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Cosmic background with animated stars */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(96, 165, 250, 0.4), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(59, 130, 246, 0.3), transparent),
+      radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.3), transparent),
+      var(--destiny-gradient);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 20s ease-in-out infinite alternate;
+    z-index: -1;
+  }
+  
+  @keyframes twinkle {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.6; }
+  }
+  
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-horizon-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-horizon-twilight rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-horizon-nebula;
+  }
+}
+
+/* Enhanced Cosmic Component Classes */
+@layer components {
+  /* Cosmic glass card with destiny glow */
+  .horizon-card {
+    background: rgba(15, 15, 26, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 20px;
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.8),
+      inset 0 2px 0 rgba(255, 255, 255, 0.15),
+      0 0 30px rgba(59, 130, 246, 0.2),
+      0 0 60px rgba(99, 102, 241, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .horizon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.15), rgba(99, 102, 241, 0.1), transparent);
+    animation: shimmer 4s ease-in-out infinite;
+  }
+  
+  .horizon-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      rgba(59, 130, 246, 0.1) 0%, 
+      rgba(99, 102, 241, 0.1) 25%, 
+      rgba(6, 182, 212, 0.1) 50%, 
+      rgba(99, 102, 241, 0.1) 75%, 
+      rgba(59, 130, 246, 0.1) 100%);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    animation: border-glow 6s ease-in-out infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+  
+  @keyframes border-glow {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.8; }
+  }
+  
+  /* Enhanced text readability over bright starfield background */
+  .cosmic-text-shadow {
+    text-shadow: 
+      0 0 20px rgba(0, 0, 0, 1.0),
+      0 0 40px rgba(0, 0, 0, 0.9),
+      0 0 60px rgba(0, 0, 0, 0.7),
+      0 4px 8px rgba(0, 0, 0, 0.8),
+      0 0 100px rgba(26, 26, 46, 0.6); /* horizon-dusk for depth */
+  }
+  
+  .cosmic-glow-text {
+    text-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.8),
+      0 0 40px rgba(96, 165, 250, 0.6),
+      0 0 80px rgba(59, 130, 246, 0.4),
+      0 4px 12px rgba(0, 0, 0, 1.0),
+      0 0 120px rgba(15, 52, 96, 0.8); /* horizon-nebula for atmospheric glow */
+  }
+  
+  /* Cosmic button styles */
+  .horizon-button {
+    @apply relative px-6 py-3 font-medium rounded-lg overflow-hidden transition-all duration-300;
+    background: rgba(15, 15, 26, 0.7);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .horizon-button:hover {
+    background: rgba(15, 15, 26, 0.9);
+    border-color: rgba(96, 165, 250, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(59, 130, 246, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Enhanced primary button with cosmic glow */
+  .horizon-button-primary {
+    @apply relative px-8 py-3 font-semibold rounded-xl text-white transition-all duration-300 overflow-hidden;
+    background: linear-gradient(135deg, var(--horizon-accent) 0%, var(--cosmic-purple) 50%, var(--cosmic-cyan) 100%);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 
+      0 8px 32px rgba(59, 130, 246, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .horizon-button-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  .horizon-button-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 12px 48px rgba(59, 130, 246, 0.4),
+      0 0 40px rgba(99, 102, 241, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .horizon-button-primary:hover::before {
+    left: 100%;
+  }
+  
+  /* Text gradient */
+  .horizon-gradient-text {
+    @apply font-bold;
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Cosmic input field */
+  .horizon-input {
+    @apply backdrop-blur-md border rounded-xl px-6 py-3 text-white placeholder-gray-400 transition-all duration-300;
+    background: rgba(15, 15, 26, 0.8);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .horizon-input:focus {
+    outline: none;
+    border-color: rgba(96, 165, 250, 0.5);
+    background: rgba(15, 15, 26, 0.95);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 0 0 3px rgba(59, 130, 246, 0.2),
+      0 0 20px rgba(59, 130, 246, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .horizon-input:hover:not(:focus) {
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 
+      0 6px 24px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Cosmic panel container */
+  .cosmic-panel {
+    @apply horizon-card p-8;
+    background: rgba(10, 10, 15, 0.9);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+  }
+  
+  /* Cosmic section divider */
+  .cosmic-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), rgba(99, 102, 241, 0.6), rgba(96, 165, 250, 0.5), transparent);
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  .cosmic-divider::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--cosmic-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  /* Cosmic loading spinner */
+  .cosmic-loader {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(96, 165, 250, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--cosmic-cyan);
+    animation: spin 1s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+  
+  /* Enhanced hover effects */
+  .cosmic-hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-hover-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(59, 130, 246, 0.3),
+      0 0 60px rgba(99, 102, 241, 0.2);
+  }
+  
+  /* Cosmic badge */
+  .cosmic-badge {
+    @apply px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.2));
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: var(--cosmic-cyan);
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+    }
+    33% { 
+      transform: translateY(-10px) rotate(1deg); 
+    }
+    66% { 
+      transform: translateY(-5px) rotate(-1deg); 
+    }
+  }
+  
+  .cosmic-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Energy pulse effect */
+  @keyframes energy-pulse {
+    0% { 
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    70% { 
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% { 
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+  }
+  
+  .cosmic-energy-pulse {
+    animation: energy-pulse 2s infinite;
+  }
+}
+
+/* Hero section styles */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 300vh; /* Extended for more scroll space */
+  background: #000000;
+  z-index: 1;
+}
+
+.hero-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1; /* Behind all content */
+}
+
+.side-menu {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  width: 24px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.menu-icon:hover span {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.hero-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 30;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #e0e7ff; /* horizon-light for better contrast */
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 30px rgba(0, 0, 0, 1.0),
+    0 0 60px rgba(0, 0, 0, 0.9),
+    0 0 120px rgba(26, 26, 46, 0.8),
+    0 6px 12px rgba(0, 0, 0, 0.9);
+}
+
+.title-char {
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400; /* Slightly heavier for better readability */
+  letter-spacing: 0.05em;
+  color: rgba(224, 231, 255, 0.9); /* horizon-light with higher opacity */
+  line-height: 1.6;
+  text-shadow: 
+    0 0 20px rgba(0, 0, 0, 1.0),
+    0 0 40px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.subtitle-line {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.scroll-progress {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scroll-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.progress-track {
+  width: 2px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, transparent, #3b82f6);
+  transition: height 0.3s ease;
+}
+
+.section-counter {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.scroll-sections {
+  position: relative;
+  z-index: 5;
+}
+
+.content-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Custom animations for ProcessWizard */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+@keyframes pulse-border {
+  0% { border-color: rgb(239 68 68); }
+  50% { border-color: rgb(248 113 113); }
+  100% { border-color: rgb(239 68 68); }
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-pulse-border {
+  animation: pulse-border 1.5s ease-in-out infinite;
+}
+
+.animate-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.slide-in-from-top-2 {
+  animation: slide-in-from-top 0.3s ease-out;
+}
+
+/* Smooth transitions for step interactions */
+.step-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-button:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.tooltip-enter {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: tooltip-fade-in 0.2s ease-out forwards;
+}
+
+@keyframes tooltip-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Usage dropdown animations */
+.usage-dropdown {
+  z-index: 60;
+  animation: slide-in-from-top 0.2s ease-out;
+  @apply horizon-card;
+}
+
+.usage-dropdown-enter {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.95);
+}
+
+.usage-dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.2s ease-out;
+}
+
+/* Enhanced fade-in animation for dropdown */
+@keyframes fadeInDropdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeInDropdown 0.25s ease-out;
+}
+
+/* Galaxy Logo Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.5); 
+    opacity: 0.4; 
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

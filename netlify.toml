@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  VITE_APP_URL = "https://agenticad.store"
+  # Configure secrets scanning to ignore client-side environment variables that are meant to be public
+  SECRETS_SCAN_OMIT_KEYS = "VITE_ZOO_API_BASE_URL,VITE_ZOO_API_TOKEN,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_GOOGLE_PATENTS_CSE_ID,VITE_SUPABASE_ANON_KEY,VITE_SUPABASE_URL,VITE_PICA_SECRET_KEY,VITE_PICA_OPENAI_CONNECTION_KEY,VITE_PICA_GEMINI_CONNECTION_KEY,VITE_PICA_ELEVENLABS_CONNECTION_KEY,VITE_GOOGLE_API_KEY,VITE_GOOGLE_CX,VITE_ELEVENLABS_DEFAULT_VOICE_ID,VITE_USPTO_API_KEY"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

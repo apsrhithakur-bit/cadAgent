@@ -1,0 +1,48 @@
+# Supabase Configuration File
+# This file configures various aspects of your Supabase project
+
+# Project settings
+project_id = "xthmikzaolkfnucpoqyb"
+
+# Edge Functions Configuration
+# Disable JWT verification for webhook functions to allow external services like Stripe to call them
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.stripe-webhook-public]
+verify_jwt = false
+
+[functions.webhook-test]
+verify_jwt = false
+
+# Keep JWT verification enabled for user-facing functions
+[functions.manual-sync-profile]
+verify_jwt = true
+
+[functions.zoo-text-to-cad]
+verify_jwt = false
+
+[functions.create-shared-model]
+verify_jwt = false
+
+[functions.get-shared-model]
+verify_jwt = false
+
+# Database settings (if needed)
+[db]
+port = 54322
+
+# API settings (if needed) 
+[api]
+port = 54321
+
+# Auth settings (if needed)
+[auth]
+enabled = true
+site_url = "https://agenticad.store"
+additional_redirect_urls = [
+  "https://agenticad.store/**",
+  "https://agenticad.store/auth/callback",
+  "http://localhost:5173/**"  # Keep for local development
+] 
